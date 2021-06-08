@@ -12,7 +12,8 @@ void setup() {
   try {
     _setup();
   } catch (std::runtime_error e) {
-    Serial.print(string_format("Setup error: %s", e).c_str());
+    Serial.print("Setup error: ");
+    Serial.println(e.what());
   }
 }
 

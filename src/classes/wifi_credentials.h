@@ -1,4 +1,5 @@
-/* Wifi storage header file */ 
+/* Wifi credentials header file */ 
+#pragma once
 #include <string>
 
 
