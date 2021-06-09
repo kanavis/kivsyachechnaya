@@ -1,9 +1,9 @@
 /* Settings */
-#include "settings.h"
+#include "classes/settings.h"
 
 
-bool Settings::settings_initialized = false;
 Settings* Settings::global_settings = NULL;
+bool Settings::_initialized = false;
 
 
 WifiCredentials& Settings::getWifiCredentials() {
@@ -16,13 +16,13 @@ TerrariumSettings& Settings::getTerrariumSettings() {
 
 
 Settings& Settings::getSettings() {
-    if (!Settings::settings_initialized) {
+    if (!Settings::_initialized) {
         throw std::runtime_error("Settings referenced before init");
     }
     return *Settings::global_settings;
 }
 
-void Settings::setGlobalettings(Settings& settings) {
-    Settings::global_settings = &settings;
-    Settings::settings_initialized = true;
+void Settings::setGlobalSettings(Settings* settings) {
+    Settings::global_settings = settings;
+    Settings::_initialized = true;
 }

@@ -7,7 +7,7 @@
 class Settings {
 private:
     static Settings* global_settings;
-    static bool settings_initialized;
+    static bool _initialized;
 
     WifiCredentials& _wifi_credentials;
     TerrariumSettings& _terrarium_settings;
@@ -23,5 +23,5 @@ public:
 
 
     static Settings& getSettings();
-    static void setGlobalettings(Settings& settings);
+    static void setGlobalSettings(Settings* settings);
 };

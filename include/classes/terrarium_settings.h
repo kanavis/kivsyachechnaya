@@ -1,5 +1,6 @@
 /* Terrarium settings header */
 #pragma once
+#include <string>
 #include <cstdint>
 
 
@@ -25,5 +26,5 @@ public:
     void setHumHigh(uint8_t hum);
     uint8_t getHumHigh();
 
-    static TerrariumSettings getDefault();
+    static TerrariumSettings* getDefault();
 };

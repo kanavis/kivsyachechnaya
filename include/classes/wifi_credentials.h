@@ -5,8 +5,8 @@
 
 class WifiCredentials {
 private:
-    std::string ssid;
-    std::string password;
+    std::string _ssid;
+    std::string _password;
 
 public:
     WifiCredentials(std::string ssid, std::string password);

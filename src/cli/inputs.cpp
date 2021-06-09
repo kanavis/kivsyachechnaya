@@ -1,6 +1,7 @@
 /* CLI inputs */
-#include "inputs.h"
+#include "CLI/inputs.h"
 #include "classes/constraints.h"
+#include "helpers/time_helpers.h"
 #include "Arduino.h"
 
 
@@ -42,8 +43,35 @@ std::string user_input_str(const char * request, unsigned long max_length = 0, b
 }
 
 
-WifiCredentials Inputs::wifi_credentials() {
+bool Inputs::expect_enter(std::string message, uint timeout) {
+    int64_t time_start = utimestamp();
+    int32_t last_time_left = -1;
+    char c;
+    for (;;) {
+        int32_t time_passed = (utimestamp() - time_start) / 1000000;
+        int32_t time_left = timeout - time_passed;
+        if (last_time_left != time_left) {
+            last_time_left = time_left;
+            Serial.print("\r");
+            Serial.print(message.c_str());
+            Serial.print(" ");
+            Serial.print(time_left < 0 ? 0 : time_left);
+        }
+        if (time_left <= 0) {
+            Serial.println();
+            return false;
+        }
+        Serial.readBytes(&c, 1);
+        if (c == '\n') {
+            Serial.println();
+            return true;
+        }
+    }
+}
+
+
+WifiCredentials* Inputs::wifi_credentials() {
     std::string ssid = user_input_str("Wi-fi SSID: ", WIFI_MAX_SSID_LENGTH);
     std::string password = user_input_str("Wi-fi password: ", WIFI_MAX_PASSWORD_LENGTH, false);
-    return WifiCredentials(ssid, password);
+    return new WifiCredentials(ssid, password);
 }

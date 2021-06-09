@@ -1,20 +1,22 @@
 /* Terrarium settings */
-#include "terrarium_settings.h"
-#include "constraints.h"
+#include "kivsyachechnaya.h"
+#include "classes/terrarium_settings.h"
+#include "classes/constraints.h"
+#include "helpers/string_helpers.h"
 
 
 TerrariumSettings::TerrariumSettings(uint16_t temp_low, uint16_t temp_high, 
                                      uint8_t hum_low, uint8_t hum_high) 
 {
-    this->setTempLow(temp_low);
-    this->setTempHigh(temp_high);
-    this->setHumLow(hum_low);
-    this->setHumHigh(hum_high);
+    setTempLow(temp_low);
+    setTempHigh(temp_high);
+    setHumLow(hum_low);
+    setHumHigh(hum_high);
 }
 
 
-TerrariumSettings TerrariumSettings::getDefault() {
-    return TerrariumSettings(21, 23, 75, 85);
+TerrariumSettings* TerrariumSettings::getDefault() {
+    return new TerrariumSettings(21, 23, 75, 85);
 }
 
 void TerrariumSettings::validate() {
@@ -34,7 +36,7 @@ uint16_t TerrariumSettings::getTempLow() { validate(); return _temp_low; }
 
 void TerrariumSettings::setTempHigh(uint16_t temp) {
     Validation::temp(temp);
-    _temp_low = temp;
+    _temp_high = temp;
 }
 uint16_t TerrariumSettings::getTempHigh() { validate(); return _temp_high; }
 
@@ -49,3 +51,4 @@ void TerrariumSettings::setHumHigh(uint8_t hum) {
     _hum_high = hum;
 }
 uint8_t TerrariumSettings::getHumHigh() { validate(); return _hum_high; }
+
