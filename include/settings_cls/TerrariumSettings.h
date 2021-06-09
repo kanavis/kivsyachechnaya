@@ -1,7 +1,8 @@
 /* Terrarium settings header */
 #pragma once
-#include <string>
+
 #include <cstdint>
+#include <string>
 
 
 class TerrariumSettings {

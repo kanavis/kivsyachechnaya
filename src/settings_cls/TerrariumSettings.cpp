@@ -1,8 +1,8 @@
 /* Terrarium settings */
-#include "kivsyachechnaya.h"
-#include "classes/terrarium_settings.h"
-#include "classes/constraints.h"
 #include "helpers/string_helpers.h"
+#include "kivsyachechnaya.h"
+#include "settings_cls/constraints.h"
+#include "settings_cls/TerrariumSettings.h"
 
 
 TerrariumSettings::TerrariumSettings(uint16_t temp_low, uint16_t temp_high, 

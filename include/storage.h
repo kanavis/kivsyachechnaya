@@ -6,10 +6,12 @@
 *   7-104    (98) wifi credentials
 *   105-111  (6)  terrarium settings
 */
+#pragma once
+
 #include <cstdint>
-#include "classes/constraints.h"
-#include "classes/wifi_credentials.h"
-#include "classes/terrarium_settings.h"
+
+#include "settings_cls/constraints.h"
+
 
 #define STORAGE_MAGIC "MAGIC!"
 #define STORAGE_SIZE 512
@@ -30,8 +32,8 @@ private:
 public:
     static bool hasMagic();
     static void setMagic();
-    static void saveWifiCredentials(WifiCredentials* credentials);
-    static WifiCredentials* loadWifiCredentials();
-    static void saveTerrariumSettings(TerrariumSettings* settings);
-    static TerrariumSettings* loadTerrariumSettings();
+    static void saveSystemSettings();
+    static void loadSystemSettings();
+    static void saveTerrariumSettings();
+    static void loadTerrariumSettings();
 };

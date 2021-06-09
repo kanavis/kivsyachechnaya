@@ -1,9 +1,10 @@
 /* Main */
-
-#include <stdexcept>
-#include <EEPROM.h>
 #include <Arduino.h>
+#include <EEPROM.h>
+#include <stdexcept>
 
+#include "kivsyachechnaya.h"
+#include "main_loop.h"
 #include "setup/setup.h"
 
 
@@ -19,5 +20,11 @@ void setup() {
 }
 
 void loop() {
-  
+  try {
+    main_loop();
+  } catch (std::runtime_error e) {
+    Serial.print("Main loop error: ");
+    Serial.println(e.what());
+  }
+  delay(MAIN_LOOP_DELAY);
 }

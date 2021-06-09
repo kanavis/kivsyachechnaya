@@ -1,5 +1,5 @@
 /* Settings setup header */
-#include "storage.h"
-#include "classes/settings.h"
+#pragma once
+
 
 void setup_settings();

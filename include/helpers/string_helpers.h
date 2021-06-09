@@ -1,6 +1,8 @@
 /* String helpers */
-#include <string>
+#pragma once
+
 #include <sstream>
+#include <string>
 
 
 template < typename T > std::string to_string( const T& n )
