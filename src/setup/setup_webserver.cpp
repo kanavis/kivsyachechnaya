@@ -2,6 +2,7 @@
 #include "globals.h"
 #include "kivsyachechnaya.h"
 #include "webserver/app.h"
+#include "webserver/static.h"
 
 #include "setup/setup_webserver.h"
 
@@ -15,6 +16,9 @@ void setup_webserver() {
 
     __DEBUG("Creating webserver app");
     start_webserver_app();
+
+    __DEBUG("Creating webserver static app");
+    start_webserver_static_app();
 
     __DEBUG("Starting webserver");
     webServer->begin();

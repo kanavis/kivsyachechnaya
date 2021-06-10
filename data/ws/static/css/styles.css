@@ -1,0 +1,52 @@
+html, body {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    min-height: 100%;
+    height: 100%;
+}
+
+body {
+    background-color: rgb(233, 233, 233);
+}
+
+.main {
+    background-color: rgb(255, 255, 255);
+    border: 1px inset rgb(114, 114, 114);
+    padding: 30px;
+    border-radius: 15px;
+    width: 1200px;
+    min-height: calc(100% - 20px);
+    margin: auto;
+    box-sizing: border-box;
+}
+
+.main-header {
+    padding-bottom: 20px;
+    border-bottom: 3px solid rgb(196, 196, 196);
+}
+
+.main-header-text {
+    font-size: 2em;
+}
+.main-header-subtext {
+    font-size: 2em;
+    line-height: 60px;
+}
+
+.mt-med {
+    margin-top: 30px;
+}
+.mt-huge {
+    margin-top: 50px;
+}
+
+.display {
+    width: 130px;
+    padding: 20px;
+    font-size: 3em;
+    border: 2px solid rgb(13, 45, 104);
+}
+
+.red {
+    color: red;
+}

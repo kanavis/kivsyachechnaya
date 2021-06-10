@@ -3,6 +3,8 @@
 #include <time.h>
 
 #include "kivsyachechnaya.h"
+#include "setup/setup_devices.h"
+#include "setup/setup_fs.h"
 #include "setup/setup_networking.h"
 #include "setup/setup_settings.h"
 #include "setup/setup_webserver.h"
@@ -21,6 +23,9 @@ void _setup() {
     setup_settings();
     setup_timezone();
     setup_networking();
+    setup_devices();
+    setup_fs();
     setup_webserver();
     __DEBUG("Setup complete");
+    __DEBUG("Memory status after setup: heap_size %d; heap_free %d", ESP.getHeapSize(), ESP.getFreeHeap());
 }

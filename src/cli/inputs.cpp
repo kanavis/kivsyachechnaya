@@ -67,6 +67,8 @@ bool Inputs::expect_enter(std::string message, uint timeout) {
         if (c == '\n') {
             Serial.println();
             return true;
+        } else if (c == ' ') {
+            return false;
         }
     }
 }
