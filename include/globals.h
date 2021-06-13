@@ -2,8 +2,8 @@
 #pragma once
 #include "ESPAsyncWebServer.h"
 
-#include "devices/DeviceDHT.h"
 #include "Networking.h"
+#include "devices/DeviceBMP280I2C.h"
 #include "settings_cls/SystemSettings.h"
 #include "settings_cls/TerrariumSettings.h"
 
@@ -20,5 +20,5 @@ extern AsyncWebServer* webServer;
 
 /* Devices */
 
-// Hum & temp 1
-extern DeviceDHT* DHT1;
+// BMP280-1
+extern DeviceBMP280I2C* BMP280_1;

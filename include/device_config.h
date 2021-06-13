@@ -1,7 +1,9 @@
 /* Device config */
 
+/* I2C BUS pinout */
+#define I2C_SDA (2)
+#define I2C_SCL (4)
 
-/* Humidity and temperature 1 */
-#define HUMTEMP1_PIN 15
-#define HUMTEMP1_DHTTYPE DHT22
-#define HUMTEMP1_RETRIES 3
+
+/* BMP280 1 */
+#define BMP280_RETRIES 3

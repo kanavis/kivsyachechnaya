@@ -9,9 +9,10 @@
 
 void WebServerGetAllReadingsView::processRequest(AsyncWebServerRequest *request) {
     DynamicJsonDocument resp(1024);
-    resp["dht1"] = DynamicJsonDocument(1024);
-    resp["dht1"]["temperature"] = DHT1->readTemperatureWithRetries();
-    resp["dht1"]["humidity"] = DHT1->readHumidityWithRetries();
+    resp["bmp280_1"] = DynamicJsonDocument(1024);
+    resp["bmp280_1"]["temperature"] = BMP280_1->readTemperature();
+    resp["bmp280_1"]["pressure"] = BMP280_1->readPressure();
+    resp["bmp280_1"]["alt"] = BMP280_1->readAltitude(1013);
 
     JSONReply(request, resp);
 }

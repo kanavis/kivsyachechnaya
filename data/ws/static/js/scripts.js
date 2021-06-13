@@ -8,7 +8,7 @@ $(() => {
     let refresh_time = 0;
     let e_display_refresh_time = $('#display-refresh-time');
     let e_display_temp = $('#display-temp');
-    let e_display_hum = $('#display-hum');
+    let e_display_pres = $('#display-pres');
     let e_display_err = $('#display-error');
 
 
@@ -30,7 +30,7 @@ $(() => {
     }
 
 
-    function update_temp_hum() {
+    function update_sensors() {
         console.log('Sensors update start');
 
         $.ajax('/api/1/sensors/get_all/', {
@@ -42,13 +42,13 @@ $(() => {
                 
                 refresh_time = Date.now();
                 e_display_temp.html(data.dht1.temperature ?? '??');
-                e_display_hum.html(data.dht1.humidity ?? '??');
+                e_display_pres.html(data.dht1.pressure ?? '??');
                 e_display_err.html('');
                 update_refresh_time();
-                if (data.dht1.temperature === null || data.dht1.humidity === null) {
-                    setTimeout(update_temp_hum, 10 * 1000);
+                if (data.dht1.temperature === null || data.dht1.pressure === null) {
+                    setTimeout(update_sensors, 10 * 1000);
                 } else {
-                    setTimeout(update_temp_hum, 10 * 60 * 1000);
+                    setTimeout(update_sensors, 10 * 60 * 1000);
                 }
             },
             'error': (jqXHR, textStatus, errorThrown) => {
@@ -57,14 +57,14 @@ $(() => {
                 refresh_time = 0;
                 e_display_err.html('Error: ' + textStatus + ' ' + errorThrown);
                 e_display_temp.html('??');
-                e_display_hum.html('??');
+                e_display_pres.html('??');
 
-                setTimeout(update_temp_hum, 10 * 1000);
+                setTimeout(update_sensors, 10 * 1000);
             },
         });
     }
 
-    update_temp_hum();
+    update_sensors();
     setInterval(update_refresh_time, 10 * 1000);
 
 });
