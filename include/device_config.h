@@ -5,5 +5,8 @@
 #define I2C_SCL (4)
 
 
-/* BMP280 1 */
-#define BMP280_RETRIES 3
+/* BME280 1 */
+#define BME280_RETRIES 3
+
+/* Nebulizer 1 */
+#define NEBULA1_PIN 18

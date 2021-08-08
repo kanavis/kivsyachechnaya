@@ -3,7 +3,8 @@
 #include "ESPAsyncWebServer.h"
 
 #include "Networking.h"
-#include "devices/DeviceBMP280I2C.h"
+#include "devices/DeviceBME280I2C.h"
+#include "devices/DeviceSimpleOutput.h"
 #include "settings_cls/SystemSettings.h"
 #include "settings_cls/TerrariumSettings.h"
 
@@ -21,4 +22,7 @@ extern AsyncWebServer* webServer;
 /* Devices */
 
 // BMP280-1
-extern DeviceBMP280I2C* BMP280_1;
+extern DeviceBME280I2C* BME280_1;
+
+// Nebulizer 1
+extern DeviceSimpleOutput* Nebula_1;

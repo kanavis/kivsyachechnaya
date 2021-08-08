@@ -9,6 +9,8 @@ $(() => {
     let e_display_refresh_time = $('#display-refresh-time');
     let e_display_temp = $('#display-temp');
     let e_display_pres = $('#display-pres');
+    let e_display_hum = $('#display-hum');
+    let e_display_alt = $('#display-alt');
     let e_display_err = $('#display-error');
 
 
@@ -33,7 +35,7 @@ $(() => {
     function update_sensors() {
         console.log('Sensors update start');
 
-        $.ajax('/api/1/sensors/get_all/', {
+        $.ajax('/api/1/sensors/get/all/', {
             'method': 'GET',
             'dataType': 'json',
             'headers': {'Accept': 'text/json'},
@@ -41,8 +43,10 @@ $(() => {
                 console.log('Sensors update end', data);
                 
                 refresh_time = Date.now();
-                e_display_temp.html(data.dht1.temperature ?? '??');
-                e_display_pres.html(data.dht1.pressure ?? '??');
+                e_display_temp.html(data.bme280_1.temperature ?? '??');
+                e_display_pres.html(data.bme280_1.pressure ?? '??');
+                e_display_hum.html(data.bme280_1.humidity ?? '??');
+                e_display_alt.html(data.bme280_1.altitude ?? '??');
                 e_display_err.html('');
                 update_refresh_time();
                 if (data.dht1.temperature === null || data.dht1.pressure === null) {

@@ -3,10 +3,10 @@
 
 #include "kivsyachechnaya.h"
 
-#include "devices/DeviceBMP280I2C.h"
+#include "devices/DeviceBME280I2C.h"
 
 
-float DeviceBMP280I2C::readPressureWithRetries() {
+float DeviceBME280I2C::readPressureWithRetries() {
     float pressure;
     unsigned char n_try = 0;
     do {
@@ -25,7 +25,7 @@ float DeviceBMP280I2C::readPressureWithRetries() {
 }
 
 
-float DeviceBMP280I2C::readTemperatureWithRetries() {
+float DeviceBME280I2C::readTemperatureWithRetries() {
     float temperature;
     unsigned char n_try = 0;
     do {
