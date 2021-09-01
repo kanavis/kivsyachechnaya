@@ -3,6 +3,7 @@
 #include "ESPAsyncWebServer.h"
 
 #include "Networking.h"
+#include "Terrarium.h"
 #include "devices/DeviceBME280I2C.h"
 #include "devices/DeviceSimpleOutput.h"
 #include "settings_cls/SystemSettings.h"
@@ -12,8 +13,10 @@
 // Settings
 extern SystemSettings* systemSettings;
 extern TerrariumSettings* terrariumSettings;
-extern Networking* networking;
 
+// Global obects
+extern Networking* networking;
+extern Terrarium* terrarium;
 
 // Webserver
 extern AsyncWebServer* webServer;

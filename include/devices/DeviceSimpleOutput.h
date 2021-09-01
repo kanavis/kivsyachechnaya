@@ -1,9 +1,8 @@
 /* Simple output device */
 #pragma once
-#include <Adafruit_BMP280.h>
 
 
-class DeviceSimpleOutput: public Adafruit_BMP280 {
+class DeviceSimpleOutput {
 private:
     uint8_t _pin;
 

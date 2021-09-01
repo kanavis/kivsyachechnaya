@@ -4,6 +4,7 @@
 
 void tick() {
     networking->tick();
+    terrarium->tick();
 }
 
 
