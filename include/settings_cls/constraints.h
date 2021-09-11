@@ -4,7 +4,9 @@
 #include <string>
 
 
+#define WIFI_MIN_SSID_LENGTH 1
 #define WIFI_MAX_SSID_LENGTH 32
+#define WIFI_MIN_PASSWORD_LENGTH 8
 #define WIFI_MAX_PASSWORD_LENGTH 64
 
 #define TEMP_MAX 60

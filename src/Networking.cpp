@@ -1,21 +1,25 @@
 /* Networking services */
 #include <NTPClient.h>
+#include <AsyncUDP.h>
 #include <sys/time.h>
 #include <WiFi.h>
 
 #include "globals.h"
 #include "helpers/time_helpers.h"
+#include "kivsyachechnaya.h"
 #include "time.h"
 
 #include "Networking.h"
 
 
 WiFiUDP ntpUDP;
+AsyncUDP udp;
 
 
 Networking::Networking() {
     _ntpClient = new NTPClient(ntpUDP, NTP_SERVER, 0);    // Ntp client holds UTC time
     _NTPLastUpdateTs = 0;
+    _BeaconLastSendTs = 0;
 }
 
 
@@ -61,6 +65,13 @@ void Networking::_NTPUpdate() {
 }
 
 
+void Networking::_BeaconSend() {
+    __DEBUG("Sending network beacon");
+    udp.broadcastTo(BEACON_PAYLOAD, BEACON_PORT);
+    _BeaconLastSendTs = timestamp();
+}
+
+
 void Networking::start() {
     Serial.println("Connecting to WiFi");
     _wifiConnect();
@@ -74,7 +85,11 @@ void Networking::tick() {
         Serial.println("Lost WiFi connection, retrying");
         _wifiConnect();
     }
-    if (timestamp() - _NTPLastUpdateTs > NTP_UPDATE_INTERVAL_SEC) {
+    int32_t ts = timestamp();
+    if (ts - _NTPLastUpdateTs > NTP_UPDATE_INTERVAL_SEC) {
         _NTPUpdate();
+    }
+    if (ts - _BeaconLastSendTs > BEACON_INTERVAL_SEC) {
+        _BeaconSend();
     }
 }

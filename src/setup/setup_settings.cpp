@@ -73,6 +73,7 @@ void print_settings() {
 void setup_settings() {
     if (Storage::hasMagic()) {
         #ifdef SETTINGS_RESET
+        __DEBUG("defined SETTINGS_RESET");
         init_settings();
         #else
         load_settings();

@@ -27,6 +27,7 @@ bool Storage::hasMagic() {
 void Storage::setMagic() {
     Storage::_init();
     EEPROM.writeString(0, String(STORAGE_MAGIC));
+    EEPROM.commit();
 }
 
 
