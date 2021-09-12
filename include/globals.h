@@ -3,7 +3,7 @@
 #include "ESPAsyncWebServer.h"
 
 #include "Networking.h"
-#include "Terrarium.h"
+#include "terrarium/Terrarium.h"
 #include "devices/DeviceBME280I2C.h"
 #include "devices/DeviceSimpleOutput.h"
 #include "settings_cls/SystemSettings.h"

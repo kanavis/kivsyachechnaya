@@ -33,6 +33,10 @@ class WebServerDeviceOnoffSetView: public WebServerView {
 };
 
 
+/* Settings */
+class WebServerTerrariumSettingsView: public WebServerView {void processRequest(AsyncWebServerRequest* request);};
+
+
 /* Errors */
 class WebServer500TestView: public WebServerView {void processRequest(AsyncWebServerRequest* request);};
 class WebServerNotFoundView: public WebServerView {void processRequest(AsyncWebServerRequest* request);};

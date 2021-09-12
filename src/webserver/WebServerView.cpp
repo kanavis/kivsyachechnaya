@@ -15,6 +15,8 @@ ArRequestHandlerFunction WebServerView::asView() {
 void WebServerView::handle(AsyncWebServerRequest* request) {
     try {
         processRequest(request);
+    } catch (RequestException e) {
+        errorReply(request, e.getMessage(), e.getCode());
     } catch (std::runtime_error e) {
         errorReply(request, "Exception happened: " + std::string(e.what()));
     }

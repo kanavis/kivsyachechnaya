@@ -7,6 +7,7 @@
 #include "setup/setup_fs.h"
 #include "setup/setup_networking.h"
 #include "setup/setup_settings.h"
+#include "setup/setup_terrarium.h"
 #include "setup/setup_webserver.h"
 
 #include "setup/setup.h"
@@ -26,6 +27,7 @@ void _setup() {
     setup_devices();
     setup_fs();
     setup_webserver();
+    setup_terrarium();
     __DEBUG("Setup complete");
     __DEBUG("Memory status after setup: heap_size %d; heap_free %d", ESP.getHeapSize(), ESP.getFreeHeap());
 }
