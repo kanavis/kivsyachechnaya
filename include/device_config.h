@@ -9,4 +9,7 @@
 #define BME280_RETRIES 3
 
 /* Nebulizer 1 */
-#define NEBULA1_PIN 18
+#define NEBULA1_PIN 15
+
+/* Heater 1 */
+#define HEATER1_PIN 5
