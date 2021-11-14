@@ -36,10 +36,6 @@ void Terrarium::_tickTerrarium() {
 }
 
 void Terrarium::tick() {
-    __DEBUG("AAAA");
-    __DEBUG("ST %d", Nebula_1);
-    __DEBUG("ST1 %d", Nebula_1->timeSinceStop());
-    __DEBUG("BBBB");
-    /*_tickDevices();
-    _tickTerrarium();*/
+    _tickDevices();
+    _tickTerrarium();
 }

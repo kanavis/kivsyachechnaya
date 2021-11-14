@@ -11,7 +11,7 @@
 #define NTP_SERVER "pool.ntp.org"
 #define UTC_OFFSET 3 * 3600
 #define NTP_UPDATE_INTERVAL_SEC 3600
-#define BEACON_INTERVAL_SEC 10
+#define BEACON_INTERVAL_SEC 30
 #define BEACON_PORT 17518
 #define BEACON_PAYLOAD "\x19\x87zoo"
 

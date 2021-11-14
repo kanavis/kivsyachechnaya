@@ -46,6 +46,10 @@ body {
     font-size: 3em;
     border: 2px solid rgb(13, 45, 104);
 }
+.display .display-value-small {
+    font-size: 0.3em;
+    color:#444;
+}
 
 .red {
     color: red;

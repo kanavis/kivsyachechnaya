@@ -9,6 +9,7 @@ $(() => {
     let e_display_refresh_time = $('#display-refresh-time');
     let e_display_temp = $('#display-temp');
     let e_display_pres = $('#display-pres');
+    let e_display_pres_raw = $('#display-pres-raw');
     let e_display_hum = $('#display-hum');
     let e_display_alt = $('#display-alt');
     let e_display_err = $('#display-error');
@@ -31,6 +32,14 @@ $(() => {
         e_display_refresh_time.html(refresh_time_str);
     }
 
+    function show_float(elem, val, round=2, mul=1) {
+        if (typeof val != 'undefined') {
+            val = Math.round(val * mul * (10 ^ round)) / (10 ^ round);
+        } else {
+            val = '??'
+        }
+        elem.html(val);
+    }
 
     function update_sensors() {
         console.log('Sensors update start');
@@ -43,10 +52,11 @@ $(() => {
                 console.log('Sensors update end', data);
                 
                 refresh_time = Date.now();
-                e_display_temp.html(data.bme280_1.temperature ?? '??');
-                e_display_pres.html(data.bme280_1.pressure ?? '??');
-                e_display_hum.html(data.bme280_1.humidity ?? '??');
-                e_display_alt.html(data.bme280_1.altitude ?? '??');
+                show_float(e_display_temp, data.bme280_1.temperature);
+                show_float(e_display_pres, data.bme280_1.pressure, 5, 1/101325);
+                show_float(e_display_pres_raw, data.bme280_1.pressure);
+                show_float(e_display_hum, data.bme280_1.humidity);
+                show_float(e_display_alt, data.bme280_1.altitude, 0);
                 e_display_err.html('');
                 update_refresh_time();
                 if (data.dht1.temperature === null || data.dht1.pressure === null) {
@@ -62,6 +72,9 @@ $(() => {
                 e_display_err.html('Error: ' + textStatus + ' ' + errorThrown);
                 e_display_temp.html('??');
                 e_display_pres.html('??');
+                e_display_pres_raw.html('??');
+                e_display_hum.html('??');
+                e_display_alt.html('??');
 
                 setTimeout(update_sensors, 10 * 1000);
             },

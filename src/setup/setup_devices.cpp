@@ -23,7 +23,7 @@ void setup_devices() {
 
     __DEBUG("Setup BME280 1");
     BME280_1 = new DeviceBME280I2C(1, BME280_RETRIES);
-    if (!BME280_1->begin(0x76)) {
+    if (!BME280_1->begin(0x76, &Wire)) {
         throw std::runtime_error("Couldn't initialize BME280-1");
     }
     BME280_1->setSampling(

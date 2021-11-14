@@ -1,6 +1,4 @@
-/* BMP280 device */
-#include <Adafruit_BMP280.h>
-
+/* BME280 device */
 #include "kivsyachechnaya.h"
 
 #include "devices/DeviceBME280I2C.h"
