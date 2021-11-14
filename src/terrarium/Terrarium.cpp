@@ -3,18 +3,15 @@
 #include "helpers/time_helpers.h"
 #include "globals.h"
 
+#include "kivsyachechnaya.h"
 
-Terrarium::Terrarium() {
-    _devNebula1 = new OnOffDevice("nebulizer_1", Nebula_1);
-    _startTS = timestamp();
-}
 
 bool Terrarium::_startDelayPassed() {
     return timestamp() - _startTS < TERR_START_DELAY;
 }
 
 void Terrarium::_tickDevices() {
-    _devNebula1->tick();
+    Nebula_1->tick();
 }
 
 void Terrarium::_tickTerrarium() {
@@ -24,8 +21,8 @@ void Terrarium::_tickTerrarium() {
     */
     if (
         _startDelayPassed() &&
-        _devNebula1->isOff() && 
-        _devNebula1->timeSinceStop() > TERR_HUMIDITY_DELAY
+        Nebula_1->isOff() && 
+        Nebula_1->timeSinceStop() > TERR_HUMIDITY_DELAY
     ) {
         float hum = BME280_1->readHumidity();
         if (hum < terrariumSettings->getHumLow()) {
@@ -33,12 +30,16 @@ void Terrarium::_tickTerrarium() {
                 "Turning on nebulizer for %ds: hum=%.2f < %.2f", 
                 TERR_NEBULA_TIME, hum, terrariumSettings->getHumLow()
             );
-            _devNebula1->on_for(TERR_NEBULA_TIME);
+            Nebula_1->on_for(TERR_NEBULA_TIME);
         }
     }
 }
 
 void Terrarium::tick() {
-    _tickDevices();
-    _tickTerrarium();
+    __DEBUG("AAAA");
+    __DEBUG("ST %d", Nebula_1);
+    __DEBUG("ST1 %d", Nebula_1->timeSinceStop());
+    __DEBUG("BBBB");
+    /*_tickDevices();
+    _tickTerrarium();*/
 }

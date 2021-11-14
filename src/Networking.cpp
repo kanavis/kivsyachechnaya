@@ -66,8 +66,8 @@ void Networking::_NTPUpdate() {
 
 
 void Networking::_BeaconSend() {
-    __DEBUG("Sending network beacon");
-    udp.broadcastTo(BEACON_PAYLOAD, BEACON_PORT);
+    __DEBUG("Sending network beacon");  
+    // udp.broadcastTo(BEACON_PAYLOAD, BEACON_PORT);
     _BeaconLastSendTs = timestamp();
 }
 

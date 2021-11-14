@@ -9,6 +9,6 @@ Terrarium* terrarium;
 
 void setup_terrarium() {
     __DEBUG("Start terrarium setup");
-    terrarium = new Terrarium();
+    terrarium = new Terrarium(Nebula_1);
     __DEBUG("Terrarium setup complete");
 }

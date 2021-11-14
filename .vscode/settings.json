@@ -44,6 +44,12 @@
         "typeinfo": "cpp",
         "string": "cpp",
         "random": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "atomic": "cpp",
+        "chrono": "cpp",
+        "list": "cpp",
+        "optional": "cpp",
+        "ratio": "cpp",
+        "string_view": "cpp"
     }
 }

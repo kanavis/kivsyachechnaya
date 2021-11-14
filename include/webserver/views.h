@@ -28,7 +28,7 @@ class WebServerGetAllReadingsView: public WebServerView {void processRequest(Asy
 
 /* Devices */
 class WebServerDeviceOnoffSetView: public WebServerView {
-    static std::map<std::string, DeviceSimpleOutput**> deviceMap;
+    static std::map<std::string, OnOffDevice**> deviceMap;
     void processRequest(AsyncWebServerRequest* request);
 };
 

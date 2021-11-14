@@ -12,13 +12,13 @@
 
 class RequestException: public std::exception {
     const std::string _message;
-    const uint8_t _code;
+    const int _code;
 public:
-    RequestException(const std::string message, const uint8_t code = 400):
-    _code(code), _message(message) {};
+    RequestException(const std::string message, const int code = 400):
+    _message(message), _code(code) {};
     
     std::string getMessage() {return _message;}
-    uint8_t getCode() {return _code;}
+    int getCode() {return _code;}
 };
 
 

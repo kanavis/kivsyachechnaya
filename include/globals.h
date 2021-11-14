@@ -14,6 +14,15 @@
 extern SystemSettings* systemSettings;
 extern TerrariumSettings* terrariumSettings;
 
+
+/* Devices */
+// BMP280-1
+extern DeviceBME280I2C* BME280_1;
+
+// Nebulizer 1
+extern OnOffDevice* Nebula_1;
+
+
 // Global obects
 extern Networking* networking;
 extern Terrarium* terrarium;
@@ -21,11 +30,3 @@ extern Terrarium* terrarium;
 // Webserver
 extern AsyncWebServer* webServer;
 
-
-/* Devices */
-
-// BMP280-1
-extern DeviceBME280I2C* BME280_1;
-
-// Nebulizer 1
-extern DeviceSimpleOutput* Nebula_1;

@@ -5,13 +5,14 @@
 #include "device_config.h"
 #include "devices/DeviceBME280I2C.h"
 #include "globals.h"
+
 #include "kivsyachechnaya.h"
 
 #include "setup/setup_devices.h"
 
 
-DeviceBME280I2C* BME280_1;
-DeviceSimpleOutput* Nebula_1;
+DeviceBME280I2C *BME280_1;
+OnOffDevice *Nebula_1;
 
 
 void setup_devices() {
@@ -35,7 +36,8 @@ void setup_devices() {
     );
     __DEBUG("Setup BME280 1 complete");
     __DEBUG("Setup Nebulizer 1");
-    Nebula_1 = new DeviceSimpleOutput(NEBULA1_PIN);
+    Nebula_1 = new OnOffDevice(NEBULA1_PIN, "Nebula1");
+    __DEBUG("ZZZ %d", Nebula_1);
     __DEBUG("Nebulizer 1 setup complete");
     __DEBUG("Device setup complete");
 }

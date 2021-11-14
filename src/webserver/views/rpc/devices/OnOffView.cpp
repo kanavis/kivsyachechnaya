@@ -5,7 +5,7 @@
 #include "webserver/views.h"
 
 
-std::map<std::string, DeviceSimpleOutput**> WebServerDeviceOnoffSetView::deviceMap = {
+std::map<std::string, OnOffDevice**> WebServerDeviceOnoffSetView::deviceMap = {
     {"nebula1", &Nebula_1}
 };
 
