@@ -1,0 +1,12 @@
+J1:
+	1: GND
+	2: +12 in
+
+J2:
+	1: GND
+	2: +12 out
+	3: +5 out
+	4: +3.3 out
+	5: nebula -
+	6: heater -
+	
