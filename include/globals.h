@@ -22,6 +22,8 @@ extern DeviceBME280I2C* BME280_1;
 // Nebulizer 1
 extern OnOffDevice* Nebula_1;
 
+// Heater 1
+extern OnOffDevice* Heater_1;
 
 // Global obects
 extern Networking* networking;

@@ -13,6 +13,7 @@
 
 DeviceBME280I2C *BME280_1;
 OnOffDevice *Nebula_1;
+OnOffDevice *Heater_1;
 
 
 void setup_devices() {
@@ -20,6 +21,18 @@ void setup_devices() {
     __DEBUG("Setup I2C");
     Wire.begin(I2C_SDA, I2C_SCL);
     __DEBUG("Setup I2C complete");
+
+    
+    __DEBUG("Setup Nebulizer 1");
+    Nebula_1 = new OnOffDevice(NEBULA1_PIN, "Nebula1");
+    __DEBUG("Nebulizer 1 setup complete");
+
+    __DEBUG("Setup Heater 1");
+    Heater_1 = new OnOffDevice(HEATER1_PIN, "Heater1");
+    Heater_1->on();
+    __DEBUG("Heater 1 setup complete");
+
+    return;
 
     __DEBUG("Setup BME280 1");
     BME280_1 = new DeviceBME280I2C(1, BME280_RETRIES);
@@ -35,9 +48,6 @@ void setup_devices() {
         Adafruit_BME280::STANDBY_MS_500   /* Standby time. */
     );
     __DEBUG("Setup BME280 1 complete");
-    __DEBUG("Setup Nebulizer 1");
-    Nebula_1 = new OnOffDevice(NEBULA1_PIN, "Nebula1");
-    __DEBUG("ZZZ %d", Nebula_1);
-    __DEBUG("Nebulizer 1 setup complete");
+    
     __DEBUG("Device setup complete");
 }
